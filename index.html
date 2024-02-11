@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<title>Portfolio de Dylan</title>
+</head>
+<body>
+
+  <div class="hero-section" id="home">
+    <div class="content">
+      <h1>HI THERE! I'M <span>Dylan</span></h1>
+      <p>DEV WEB & WEB MOBILE - JS FULLSTACK</p>
+      <div>EN reconversion dans le développement web et web mobile, je suis à l'affût de nouveaux projets développeur Fullstack JS. JS, Node.Js, Express, REACT
+      HTML & CSS sont mes terrains de jeux de prédilection. J'ai soif d'apprentissage et j'ai hâte de contribuer à l'évolution de vos projets ! 
+      </div>
+      <a href="#about">MORE ABOUT ME</a>
+    </div>
+    <div class="hero-image">
+      <img src="./Tryndamere_Still_Here.webp" alt="Dylan">
+    </div>
+  </div>
+
+  <div class="about-section" id="about">
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>I'm Dylan Briet, Développeur web fullstack JS</p>
+      <div class="about-description">
+        En reconversion dans le développement web et web mobile, je suis à l'affût de nouveaux projets développeur Fullstack JS. JS, Node.Js, Express, REACT HTML & CSS sont mes terrains de jeux de prédilection. J'ai soif d'apprentissage et j'ai hâte de contribuer à l'évolution de vos projets ! 
+      </div>
+      <!-- Icônes et textes associés ici -->
+      <div class="about-icons">
+        <div class="icon-container">
+          <img src="./navigateur.png" alt="Veille techno">
+          <p>Veille techno</p>
+        </div>
+        <div class="icon-container">
+          <img src="./cowork.png" alt="Travail d'équipe">
+          <p>Travail d'équipe</p>
+        </div>
+        <div class="icon-container">
+          <img src="./frontendbis.png" alt="Front-end">
+          <p>Front-end</p>
+        </div>
+        <div class="icon-container">
+          <img src="./backend.png" alt="Back-end">
+          <p>Back-end</p>
+        </div>
+        <div class="icon-container">
+          <img src="./hearth.png" alt="Passion">
+          <p>Passion</p>
+        </div>
+      </div>
+      <blockquote>
+        "Je passe mon temps à faire ce que je ne sais pas faire, pour apprendre à le faire." - Pablo Picasso
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="portfolio-section" id="portfolio">
+    <div class="portfolio-title">
+      <h2>PORTFOLIO</h2>
+    </div>
+    <div class="portfolio-categories">
+      <button type="button" class="category-btn active" onclick="filterProjects('all', event)">Tous</button>
+      <button type="button" class="category-btn" onclick="filterProjects('vitrine', event)">Site vitrine</button>
+      <button type="button" class="category-btn" onclick="filterProjects('ecommerce', event)">E-commerce</button>
+      <button type="button" class="category-btn" onclick="filterProjects('blog', event)">Blog</button>
+      <button type="button" class="category-btn" onclick="filterProjects('app', event)">App</button>
+    </div>
+    <div class="portfolio-items">
+      <!-- Projet appartenant à la catégorie 'Site vitrine' -->
+      <div class="project-item all vitrine">
+        <img src="chemin-vers-image-projet-vitrine1.jpg" alt="Projet vitrine 1">
+        <p>Projet Vitrine 1</p>
+      </div>
+      <!-- Projet appartenant à la catégorie 'E-commerce' -->
+      <div class="project-item all ecommerce">
+        <img src="chemin-vers-image-projet-ecommerce1.jpg" alt="Projet e-commerce 1">
+        <p>Projet E-commerce 1</p>
+      </div>
+      <!-- Projet appartenant aux catégories 'Blog' et 'Site vitrine' -->
+      <div class="project-item all blog vitrine">
+        <img src="chemin-vers-image-projet-blog1.jpg" alt="Projet blog 1">
+        <p>Projet Blog 1</p>
+      </div>
+      <!-- Projet appartenant à la catégorie 'App' -->
+      <div class="project-item all app">
+        <img src="chemin-vers-image-projet-app1.jpg" alt="Projet app 1">
+        <p>Projet App 1</p>
+      </div>
+      <!-- Ajoutez d'autres projets selon ce modèle, en les classant dans les catégories appropriées -->
+    </div>
+  </div>
+
+<!-- Section Parcours -->
+<div class="parcours-section" id="parcours">
+  <div class="content">
+  <h2>Parcours</h2>
+  <p>Mon parcours académique et professionnel.</p>
+  </div>
+</div>
+
+<!-- Section Contact -->
+<div class="contact-section" id="contact">
+  <div class="content">
+  <h2>Contact</h2>
+  <p>Comment me joindre.</p>
+  </div>
+</div>
+
+<div class="burger-menu-button">☰</div>
+<div class="menu" id="sidebar">
+  <div class="close-button"></div>
+  <img src="./Tryndamere_Still_Here.webp" alt="Dylan">
+  <ul class="navigation">
+    <li><a href="#home">HOME</a></li>
+    <li><a href="#about">ABOUT ME</a></li>
+    <li><a href="#portfolio">PORTFOLIO</a></li>
+    <li><a href="#parcours">PARCOURS</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
