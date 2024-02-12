@@ -63,11 +63,11 @@
       <h2>PORTFOLIO</h2>
     </div>
     <div class="portfolio-categories">
-      <button type="button" class="category-btn active" onclick="filterProjects('all', event)">Tous</button>
-      <button type="button" class="category-btn" onclick="filterProjects('vitrine', event)">Site vitrine</button>
-      <button type="button" class="category-btn" onclick="filterProjects('ecommerce', event)">E-commerce</button>
-      <button type="button" class="category-btn" onclick="filterProjects('blog', event)">Blog</button>
-      <button type="button" class="category-btn" onclick="filterProjects('app', event)">App</button>
+      <button type="button" class="category-btn active" data-category="all">Tous</button>
+      <button type="button" class="category-btn" data-category="vitrine">Site vitrine</button>
+      <button type="button" class="category-btn" data-category="ecommerce">E-commerce</button>
+      <button type="button" class="category-btn" data-category="blog">Blog</button>
+      <button type="button" class="category-btn" data-category="app">App</button>
     </div>
     <div class="portfolio-items">
       <!-- Projet appartenant à la catégorie 'Site vitrine' -->
@@ -92,23 +92,85 @@
       </div>
       <!-- Ajoutez d'autres projets selon ce modèle, en les classant dans les catégories appropriées -->
     </div>
+  
   </div>
 
 <!-- Section Parcours -->
 <div class="parcours-section" id="parcours">
-  <div class="content">
-  <h2>Parcours</h2>
-  <p>Mon parcours académique et professionnel.</p>
+  <div class="container">
+    <h2>Parcours</h2>
+    <h3>Expériences</h3>
+    <div class="experience-row">
+      <div class="experience-detail">
+        <div class="experience-title">Responsable réparateur IOS</div>
+        <div class="experience-date">Mai 2021 - Février 2023</div>
+        <p>Devenu cadre responsable d'une équipe de répération dans l'entreprise Service Connect, je devais gérer une équipe , donner des directives mais également me charger du site internet qui gérer les SAV, tout en réparant les produits Ios et Mac de nos clients.
+
+        </p>
+      </div>
+      <div class="experience-detail">
+        <div class="experience-title">Responsable Save</div>
+        <div class="experience-date">Juillet 2018 - Février 2021</div>
+        <p>Chargé de réparer les téléphones des clients , je suis devenu rapidement un responsable dans cette entreprise, suite à cela mes missions étaient de gérer la boutique afin qu'elle soit le plus attractif possible et de gérer mon équipe afin que tout le monde soit le plus productif possible mais également dans les meilleurs</p>
+      </div>
+    </div>
+    <div class="separator"></div>
+    <h3>Formations</h3>
+    <div class="education-row">
+      <div class="education-detail">
+        <div class="experience-title">Développeur Web & mobile</div>
+        <div class="experience-date">Octobre 2023 - Avril 2024</div>
+        <p>Dans la prestigieuse école O'clock , j'ai appris à coder sur le web ainsi que sur le mobile en me servant de la technologie de Javascript , j'ai ainsi pu appronfondir mes connaissances sur ce language ainsi que sur le Frontend et le Backend</p>
+      </div>
+      <div class="education-detail">
+        <div class="experience-title">Bac pro commerce</div>
+        <div class="experience-date">2014 - 2017</div>
+        <p>A l'école Jules Vernes , pendant 3 ans j'ai appris les notions de vente ainsi que du commerce dans le monde professionnel</p>
+      </div>
+    </div>
+    <button class="cv-button" onclick="location.href='URL_DE_VOTRE_CV';">MON CV</button> <!-- Bouton CV -->
   </div>
 </div>
 
 <!-- Section Contact -->
 <div class="contact-section" id="contact">
-  <div class="content">
-  <h2>Contact</h2>
-  <p>Comment me joindre.</p>
+  <h1>Contact</h1>
+    <div class="collaborations">
+      <h2>Collaborations</h2>
+      <p>Je suis ouvert aux opportunités de collaboration, que ce soit pour des missions freelance ou des postes à temps plein. N'hésitez pas à me contacter si tu as un projet intéressant à discuter !</p>
+    </div>
+    <div class="contact-content"></div>
+    <div class="follow-contact-container">
+      <div class="follow">
+        <h2>On se suit ?</h2>
+        <p>Je suis toujours hyper connecté, donc tu peux aussi me joindre par ces moyens :</p>
+        <p>
+          <img src="./mail.png" alt="Email Icon" class="icon">
+          <a href="mailto:dylandu78800@hotmail.fr">Dylan Briet</a>
+        </p>
+        <p>
+          <img src="./github.png" alt="GitHub Icon" class="icon">
+          <a href="https://github.com/DylanBriet">GitHub</a>
+        </p>
+        <p>
+          <img src="./linkedin.png" alt="LinkedIn Icon" class="icon">
+          <a href="http://www.linkedin.com/in/dylan-briet-731659273">LinkedIn</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <h2>Envie de me contacter?</h2>
+        <p>Laisse un message et je te répondrai dès que possible !</p>
+        <form action="URL_DU_TRAITEMENT_DU_FORMULAIRE" method="POST">
+          <input type="text" name="name" placeholder="Ton nom" required>
+          <input type="email" name="email" placeholder="Ton e-mail" required>
+          <input type="text" name="subject" placeholder="Sujet" required>
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+</div>>
 
 <div class="burger-menu-button">☰</div>
 <div class="menu" id="sidebar">

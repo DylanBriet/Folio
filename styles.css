@@ -3,6 +3,8 @@ body, html {
   padding: 0;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  height: 100vh;
+  background-color: #f0f0f0;
 }
 
 .hero-section {
@@ -19,7 +21,6 @@ body, html {
   width: 100%;
   z-index: 1;
   padding: 40px;
-  background-color: #f0f0f0;
 }
 
 .hero-image {
@@ -37,7 +38,7 @@ body, html {
 .content {
   flex: 1;
   text-align: center;
-  max-width: 80%; /* Ajustez selon la largeur désirée du contenu */
+  max-width: 100%; /* Ajustez selon la largeur désirée du contenu */
   margin: 0 auto;
   height: 100vh;
   display: flex;
@@ -45,6 +46,7 @@ body, html {
   justify-content: space-around;
   align-items: center;
   align-content: center;
+  box-sizing: border-box;
 }
 
 .content h1 {
@@ -106,7 +108,6 @@ body, html {
 
 
 .about-section {
-  height: 100vh; /* La hauteur s'adapte au contenu maintenant */
   background-color: #f0f0f0;
   padding: 0 0 0 15%;
   text-align: center;
@@ -115,8 +116,7 @@ body, html {
   align-items: center;
   max-width: 100vw;
   margin: auto;
-  border: 2px solid #ccc; /* ou la couleur désirée */
-  box-sizing: border-box;
+  position: relative;
 }
 
 .about-content {
@@ -129,6 +129,7 @@ body, html {
 
 .about-content h2 {
   margin-bottom: 20px; /* Espace entre le titre et le paragraphe suivant */
+  margin-top: 10%;
 }
 
 .about-content p {
@@ -195,7 +196,7 @@ blockquote {
   text-align: center;
   height: 100vh;
   background-color: #f0f0f0; /* Ajustez selon la section */
-  padding: 0 50px;
+  padding: 0 0 0 5%;
   position: fixed;
   left: 0;
   width: 100%;
@@ -209,6 +210,7 @@ blockquote {
 
 .portfolio-title h2 {
   margin-top: -20px;
+  font-size: 2.4em;
   /* Styles similaires à ceux de votre section 'About' */
 }
 
@@ -224,6 +226,7 @@ blockquote {
   color: rgb(52, 80, 158);
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 1.1em;
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -242,6 +245,7 @@ blockquote {
   margin-top: -100px;
 }
 
+
 .project-item {
   width: calc(33.333% - 20px);
   margin: 10px;
@@ -251,6 +255,9 @@ blockquote {
   border: 2px solid #009688;
   cursor: pointer;
   transition: transform 0.3s ease;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .project-item img {
@@ -267,10 +274,57 @@ blockquote {
   transform: scale(1.05);
 }
 
+.parcours-section{
+  height: 100vh;
+}
+
+.parcours-section h2 {
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: -12%;
+  font-size: 2.1em;
+}
+
+.parcours-section h3 {
+  color: #333;
+  margin-bottom: 2%;
+  font-size: 1.8em;
+}
+
+
+.experience-title {
+  display: inline-block; /* Utilisez inline-block pour que la div ne prenne que l'espace nécessaire autour du texte */
+  padding: 5px 10px; /* Ajustez le padding selon vos besoins */
+  font-weight: bold;
+  color: #f0f0f0;
+  background-color: #009688;
+  text-align: center;
+  margin: 0 auto; /* Pour centrer le bloc dans son conteneur parent */
+}
+
+.experience-date {
+  padding: 20px 0;
+}
+
+
+.experience-row, .education-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.experience-detail, .education-detail {
+  flex: 1;
+  background-color: #f0f0f0; /* couleur de fond pour les détails */
+  margin-right: 10px;
+  padding: 10px;
+}
+
+
 .parcours-section, .contact-section {
   height: 100vh;
   background-color: #f0f0f0; /* Ajustez selon la section */
-  padding: 50px;
+  padding: 0 0 0 10%;
   position: fixed;
   top: 100vh; /* Initialement positionnée en dehors de la vue */
   left: 0;
@@ -281,6 +335,38 @@ blockquote {
   justify-content: center;
   align-items: center;
 }
+
+.parcours-section .container{
+  box-sizing: border-box;
+  width: 50%;
+  height: 70%;
+}
+
+.separator {
+  border-bottom: 2px dashed rgb(52, 80, 158); /* Trait en pointillé */
+}
+
+.cv-button {
+  display: block; /* Affiche le bouton comme un bloc pour permettre le centrage */
+  margin: 20px auto; /* Centre le bouton horizontalement */
+  padding: 10px 20px; /* Padding interne pour le bouton */
+  background-color: rgb(52, 80, 158); /* Couleur du fond du bouton */
+  color: white; /* Couleur du texte du bouton */
+  border: none; /* Pas de bordure pour le bouton */
+  border-radius: 5px; /* Coins arrondis pour le bouton */
+  cursor: pointer; /* Change le curseur en main quand on survole le bouton */
+  text-transform: uppercase; /* Texte en majuscules */
+  font-weight: bold; /* Texte en gras */
+  font-size: 1em; /* Taille du texte */
+  transition: background-color 0.3s; /* Transition pour l'effet hover */
+}
+
+.cv-button:hover {
+  background-color: white;
+  color:  rgb(69, 95, 167);
+  border: 1px solid  rgb(69, 95, 167); /* Changement de couleur au survol */
+}
+
 
 .burger-menu-button {
   display: none; /* Cachez-le par défaut, il ne sera visible que sur les petits écrans */
@@ -339,6 +425,10 @@ blockquote {
   text-align: center;
 }
 
+.navigation a:hover{
+  color: rgb(69, 95, 167);
+}
+
 section .content {
   display: flex;
   flex-direction: column;
@@ -346,6 +436,75 @@ section .content {
   align-items: center;
   height: 100%;
   text-align: center;
+}
+
+.contact-section {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100%;
+}
+
+.contact-section h1 {
+  margin-bottom: 20px;
+  font-size: 2.3em;
+}
+
+.contact-section h2 {
+  color:rgb(69, 95, 167);
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.contact-section p {
+  font-size: 1em
+}
+
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.collaborations{
+  margin: 0 10%;
+}
+
+.follow, .contact-form {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input, .contact-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.contact-form button {
+  padding: 10px;
+  background-color: #009688;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #007766;
+}
+
+.follow img.icon {
+  vertical-align: middle; /* Alignez les images avec le texte */
+  margin-right: 8px; /* Espacement entre l'image et le texte */
+  width: 24px; /* Largeur fixe pour toutes les icônes */
+  height: auto; /* Hauteur automatique pour maintenir l'aspect ratio */
 }
 
 /* Styles supplémentaires pour d'autres sections et éléments peuvent être ajoutés ici */
@@ -357,26 +516,117 @@ section .content {
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
+    height: 100vh;
+    margin-top: -10%;
   }
-  .portfolio-section, .parcours-section, .contact-section {
+  .portfolio-section {
     width: 100%;
-    padding: 50px 15%;
+    height: 100vh;
+    margin: auto auto auto 75px;
+    display: flex;
    }
 
+   .collaborations {
+    margin: 0 12% 0 15%;
+   }
+
+
+  .parcours-section{
+    width: 100%;
+    height: 100vh;
+  }
+
+  .parcours-section h2 {
+    font-size: 1.5em;
+  }
+
+  .parcours-section h3 {
+    font-size: 1.2em;
+  }
+
   .about-section {
-    padding:0 0 0 35%;
+    height: 100vh;
+    margin: 0 0 0 10%;
    }
 }
+
+
+@media screen and (max-width: 970px ) {
+
+  .portfolio-section{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    margin: 0 0 0 8%;
+  }
+  .parcours-section{
+    margin: 0 0 0 18%;
+    padding: 0 0 ;
+    width: 100%;
+  }
+
+  .contact-section{
+    display: flex;
+    padding: 0 0 0 150px;
+  }
+
+  .portfolio-categories{
+    width: 60%;
+  }
+
+  .portfolio-items{
+    width: 60%;
+    display: flex;
+  }
+  .parcours-section h2 {
+    font-size: 1.3em;
+  }
+
+  .about-section {
+    height: 100vh;
+    margin: 0 0 0 20%;
+   }
+
+  .parcours-section .container{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .parcours-section {
+    margin: -5% 0 0 20%;
+  }
+
+  .contact-section{
+    display: flex;
+    padding: 0 0 0 150px;
+  }
+
+}
+
 
 /* Centrage du contenu et ajustements pour les écrans de moins de 680px de large */
 @media screen and (max-width: 680px) {
   .content {
     /* Ajustements pour le centrage du texte quand la largeur de la fenêtre est inférieure à 680px */
-    margin: 0;
+    margin: 0 60px 0 0 ;
     width: 100%;
     height: auto;
     padding: 20px;
   }
+
+  .portfolio-items{
+    width: 100%;
+  }
+
+  .parcours-section .container{
+    width: 100%;
+  }
+
+  .portfolio-categories{
+    width: 100%;
+  }
+
 
   .content div {
     margin: 0 50px;
@@ -411,6 +661,7 @@ section .content {
   .about-section, .portfolio-section, .parcours-section, .contact-section {
     width: 100%;
     padding: 0;
+    margin: 0;
   }
 
   .burger-menu-button {
