@@ -20,8 +20,7 @@ body, html {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
-  padding: 40px;
+  z-index: 3;
 }
 
 .hero-image {
@@ -210,12 +209,10 @@ blockquote {
 }
 
 .portfolio-title h2 {
-  margin-top: -20px;
   font-size: 2.4em;
 }
 
 .portfolio-categories {
-  margin-top: -100px;
 }
 
 .category-btn {
@@ -242,7 +239,6 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: -80px;
 }
 
 
