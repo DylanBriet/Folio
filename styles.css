@@ -242,7 +242,7 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: -100px;
+  margin-top: -80px;
 }
 
 
@@ -261,8 +261,8 @@ blockquote {
 }
 
 .project-item img {
-  max-width: 100%;
-  height: auto;
+  max-width: 200px;
+  height: 100px;
   margin-bottom: 10px;
 }
 
@@ -575,6 +575,13 @@ section .content {
     width: 60%;
     display: flex;
   }
+
+  .project-item img {
+    max-width: 150px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
   .parcours-section h2 {
     font-size: 1.3em;
   }
