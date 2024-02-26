@@ -1,148 +1,147 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var sections = document.querySelectorAll('.hero-section, .about-section, .portfolio-section, .parcours-section, .contact-section');
-  var menuButton = document.querySelector('.burger-menu-button');
-  var closeButton = document.querySelector('.close-button');
-  var menu = document.getElementById('sidebar');
-  var currentIndex = 0; 
-  var isMenuOpen = false; 
+  let currentSectionIndex = 0;
+  const sections = document.querySelectorAll('div[id]');
+  let isThrottled = false;
+  const burgerMenuButton = document.querySelector('.burger-menu-button');
+  const menu = document.querySelector('.menu');
+  const closeButton = document.querySelector('.close-button');
+  let isMenuOpen = false;
 
-  function adjustNavDisplay() {
-
-    if (currentIndex === 0) {
-        if (isMenuOpen) {
-            menu.classList.add('active');
-        } else {
-            menu.classList.remove('active');
-        }
-    }
-
-    else {
-        if (window.innerWidth > 680) {
-            menu.classList.add('active');
-        } else if (isMenuOpen) {
-            menu.classList.add('active');
-        } else {
-            menu.classList.remove('active');
-        }
-    }
-}
-
-function toggleMenu() {
-  menu.classList.toggle('active');
-  isMenuOpen = menu.classList.contains('active');
-}
-
-function transitionToSection(index) {
-  sections.forEach((section, i) => {
-    if (i === index) {
-      section.style.top = '0'; 
-      section.classList.add('active-section'); 
-    } else {
-      section.style.top = '100vh';
-      section.classList.remove('active-section'); 
-    }
-  });
-  currentIndex = index; 
-  adjustNavDisplay(); 
-}
-
-
-  sections.forEach((section, index) => {
-    section.addEventListener('click', () => {
-      if (currentIndex < sections.length - 1) {
-        transitionToSection(currentIndex + 1);
-      }
-    });
-  });
-
-  document.querySelectorAll('.navigation a').forEach((link, index) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      transitionToSection(index);
-    });
-  });
-
-  window.addEventListener('wheel', function(event) {
-    if (event.deltaY > 0 && currentIndex < sections.length - 1) {
-      transitionToSection(currentIndex + 1);
-    } else if (event.deltaY < 0 && currentIndex > 0) {
-      transitionToSection(currentIndex - 1);
-    }
-  });
-
-  menuButton.addEventListener('click', function() {
-    isMenuOpen = !isMenuOpen;
-    adjustNavDisplay();
-});
-  closeButton.addEventListener('click', toggleMenu);
-
-  window.addEventListener('resize', handleResize);
-
-  function handleResize() {
-    adjustNavDisplay();
-    var isHomePage = currentIndex === 0;
-    if (window.innerWidth > 680 && isHomePage) {
-      menu.classList.remove('active');
+  function manageClicksOutsideMenu(e) {
+    if (isMenuOpen && !menu.contains(e.target) && e.target !== burgerMenuButton) {
+      menu.classList.remove('open');
       isMenuOpen = false;
-    } else if (window.innerWidth <= 680 || isMenuOpen) {
-      menu.classList.add('active');
-    } else {
-      menu.classList.remove('active');
+      e.stopPropagation();
     }
   }
 
-  function filterProjects(category) {
-    var items = document.querySelectorAll('.project-item');
-    var visibleItemsCount = 0;
-
-    items.forEach(function(item) {
-        if (category === 'all' || item.classList.contains(category)) {
-            item.style.display = 'flex';
-            visibleItemsCount++; 
+  burgerMenuButton.addEventListener('click', (e) => {
+      if (isMenuOpen) {
+          menu.classList.remove('open');
+          isMenuOpen = false;
         } else {
-            item.style.display = 'none';
+          menu.classList.add('open');
+          isMenuOpen = true;
         }
+        e.stopPropagation(); 
+      });
+
+  closeButton.addEventListener('click', () => {
+    menu.classList.remove('open');
+    isMenuOpen = false;
+  });
+
+  document.addEventListener('click', manageClicksOutsideMenu);
+
+  window.addEventListener('click', function(e) {
+    if (!e.target.closest('a, button, .burger-menu-button, .close-button, .category-btn') && !isMenuOpen) {
+      scrollToSection(currentSectionIndex + 1);
+    }
+  });
+
+  function scrollToSection(index) {
+    if (index < 0 || index >= sections.length || isThrottled) {
+      return;
+    }
+    isThrottled = true;
+    setTimeout(() => {
+      isThrottled = false;
+    }, 600);
+
+    const targetSection = sections[index];
+    window.scrollTo({
+      top: targetSection.offsetTop,
+      behavior: 'smooth'
+    });
+    currentSectionIndex = index;
+
+    const textElements = targetSection.querySelectorAll('h1, h2, p, div');
+    textElements.forEach(el => {
+      el.classList.add('animated-text');
     });
 
-    var newWidth = '100%';
-    if (visibleItemsCount > 1) {
-        newWidth = `${Math.min(100 / Math.ceil(visibleItemsCount / 2), 100)}%`;
-    }
+    sections.forEach((section, idx) => {
+      if (idx !== index) {
+        section.querySelectorAll('h1, h2, p, div').forEach(el => {
+          el.classList.remove('animated-text');
+        });
+      }
+    });
 
-    items.forEach(function(item) {
-        if (item.style.display !== 'none') {
-            item.style.width = newWidth;
-        }
+    if (isMenuOpen) {
+      menu.classList.remove('open');
+      isMenuOpen = false;
+    }
+  }
+
+  window.addEventListener('wheel', function(e) {
+    if (!isMenuOpen) { 
+      const direction = e.deltaY > 0 ? 1 : -1;
+      scrollToSection(currentSectionIndex + direction);
+    }
+  });
+
+  let startY = 0;
+  document.addEventListener('touchstart', function(e) {
+    startY = e.touches[0].clientY;
+  }, false);
+
+  document.addEventListener('touchend', function(e) {
+    let endY = e.changedTouches[0].clientY;
+    let direction = startY - endY > 0 ? 1 : -1;
+    if (Math.abs(startY - endY) > 50 && !isMenuOpen) { 
+      scrollToSection(currentSectionIndex + direction);
+    }
+  }, false);
+  window.addEventListener('scroll', function() {
+      if (window.pageYOffset === 0) {
+        currentSectionIndex = 0;
+      }
+      
+    });
+    function filterProjects(category) {
+      var items = document.querySelectorAll('.project-item');
+      var visibleItemsCount = 0;
+  
+      items.forEach(function(item) {
+          if (category === 'all' || item.classList.contains(category)) {
+              item.style.display = 'flex';
+              visibleItemsCount++; 
+          } else {
+              item.style.display = 'none';
+          }
+      });
+  
+  
+      document.querySelectorAll('.category-btn').forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.stopPropagation(); 
+            var category = this.getAttribute('data-category');
+            filterProjects(category);
+        });
+    });
+    }
+  
+    document.querySelectorAll('.category-btn').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var category = this.getAttribute('data-category');
+        filterProjects(category);
+      });
     });
 
     document.querySelectorAll('.category-btn').forEach(function(button) {
-      button.addEventListener('click', function(event) {
-          event.stopPropagation(); 
+      button.addEventListener('click', function() {
+          document.querySelectorAll('.category-btn').forEach(function(btn) {
+              btn.classList.remove('active');
+          });
+  
+          this.classList.add('active');
+  
           var category = this.getAttribute('data-category');
           filterProjects(category);
       });
   });
-  }
+    filterProjects('all');
 
-  document.querySelectorAll('.category-btn').forEach(function(button) {
-    button.addEventListener('click', function() {
-      var category = this.getAttribute('data-category');
-      filterProjects(category);
-    });
-  });
 
-  document.addEventListener('click', function(event) {
-    var clickInsideMenu = menu.contains(event.target) || menuButton.contains(event.target);
-    
-    if (!clickInsideMenu && isMenuOpen && window.innerWidth <= 680) {
-        toggleMenu();
-        event.stopImmediatePropagation();
-    }
-}, true);
-
-  adjustNavDisplay();
-  filterProjects('all');
-  handleResize();
-  window.addEventListener('resize', adjustNavDisplay);
- 
 });
