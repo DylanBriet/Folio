@@ -533,8 +533,18 @@ blockquote {
   .parcours-section h2{
     font-size: 2em;
   }
-}
 
+  .parcours-section h3{
+    display: none;
+  }
+  .parcours-section .separator{
+    display: none;
+  }
+
+  .parcours-section .experience-date{
+    display: none;
+  }
+}
 .contact-section {
   padding-left: 200px; 
   box-sizing: border-box;
