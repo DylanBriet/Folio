@@ -6,7 +6,7 @@ body {
   overflow-y: scroll;
   scrollbar-width: none;
   margin: 0px;
-  background-color: #f0f0f0;
+  background-color: #a8c5e29f;
 }
 
 body::-webkit-scrollbar {
@@ -20,7 +20,6 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   height: 100vh; 
-  background: #f0f0f0;
   padding-left: 200px;
 }
 
@@ -67,7 +66,9 @@ h1 {
 }
 
 .hero-section .content div {
-  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-style: italic;
+  margin: 0 20px 20px 20px;
 }
 
 .hero-section .content a {
@@ -150,6 +151,74 @@ h1 {
   }
 }
 
+@keyframes moveBubble1 {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: translateX(150px) translateY(-100px);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+}
+
+@keyframes moveBubble2 {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: translateX(-150px) translateY(100px);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+}
+
+.bubble1.run-animation,
+.bubble2.run-animation,
+.bubble3.run-animation,
+.bubble4.run-animation {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  background-color: rgba(255, 255, 255, 0.5);
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.bubble1.run-animation {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  animation-name: moveBubble1;
+}
+
+.bubble2.run-animation {
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 30%;
+  animation-name: moveBubble2;
+}
+
+.bubble3.run-animation {
+  width: 120px;
+  height: 120px;
+  top: 70%;
+  left: 45%;
+  animation-delay: 5s; /* Décalage pour que les animations ne soient pas synchronisées */
+  animation-name: moveBubble1;
+}
+
+.bubble4.run-animation {
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  left: 80%;
+  animation-name: moveBubble2;
+}
 
 .about-section {
   display: flex;
@@ -157,7 +226,6 @@ h1 {
   padding-left: 200px; 
   box-sizing: border-box;
   height: 100vh;
-  background: #f0f0f0;
 }
 
 .about-content {
@@ -182,10 +250,13 @@ h1 {
 }
 
 .about-description{
-  background-color: rgb(218, 222, 236);
-  border: 1px solid #ccc; 
+  background-color:#cfd6dc9f;
+  border: 1px solid #cfd6dc9f; 
+  color:#4a5a6b;
   border-radius: 90px;
   font-size: 1.1em;
+  padding: 6px;
+  margin: 4px;
 }
 
 
@@ -242,6 +313,14 @@ blockquote {
   }
 }
 
+
+@media (max-width: 450px) {
+  .about-section {
+    height:auto;
+  }
+}
+
+
 .portfolio-section {
   display: flex;
   justify-content: center;
@@ -250,7 +329,6 @@ blockquote {
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-around;
-  background: #f0f0f0;
   margin-bottom: 20px;
 }
 
@@ -351,7 +429,6 @@ blockquote {
   box-sizing: border-box;
   max-height: 100vh;
   min-height: 100vh;
-  background: #f0f0f0;
 }
 
 .parcours-section a {
@@ -449,6 +526,15 @@ blockquote {
   }
 }
 
+@media (max-width: 450px) {
+  .parcours-section {
+    margin-bottom: 0;
+  }
+  .parcours-section h2{
+    font-size: 2em;
+  }
+}
+
 .contact-section {
   padding-left: 200px; 
   box-sizing: border-box;
@@ -458,7 +544,6 @@ blockquote {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background: #f0f0f0;
 }
 
 .contact-section h1, .collaborations h2, .follow h2, .contact-form h2 {
@@ -501,8 +586,8 @@ blockquote {
   border-radius: 5px;
 }
 
-.contact h2 {
-  color: #0056b3;
+.contact-section h2 {
+  font-size: 2em;
 }
 
 .contact-form input, .contact-form textarea {
@@ -635,8 +720,8 @@ h2, h3 {
 .menu {
   width: 200px;
   height: 100vh;
-  background: #7b7777;
-  color: white;
+  background:#4a5a6b;
+  color: #4a5a6b;
   position: fixed;
   left: 0;
   top: 0;

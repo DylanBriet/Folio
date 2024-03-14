@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('touchend', function(e) {
     let endY = e.changedTouches[0].clientY;
     let direction = startY - endY > 0 ? 1 : -1;
-    if (Math.abs(startY - endY) > 50 && !isMenuOpen) { 
+    if (Math.abs(startY - endY) > 50 && !isMenuOpen) {
       scrollToSection(currentSectionIndex + direction);
     }
   }, false);
@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
           document.querySelectorAll('.category-btn').forEach(function(btn) {
               btn.classList.remove('active');
           });
-  
           this.classList.add('active');
   
           var category = this.getAttribute('data-category');
@@ -144,4 +143,40 @@ document.addEventListener('DOMContentLoaded', function() {
     filterProjects('all');
 
 
+    const navigationLinks = document.querySelectorAll('.navigation a');
+    navigationLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); 
+        const targetId = this.getAttribute('href'); 
+        const targetSection = document.querySelector(targetId);
+        const index = Array.from(sections).indexOf(targetSection); 
+  
+        scrollToSection(index);
+
+        if (isMenuOpen) {
+          menu.classList.remove('open');
+          isMenuOpen = false;
+        }
+      });
+    });
+
+    function restartAnimation() {
+      const bubbles = document.querySelectorAll('.bubble1, .bubble2, .bubble3, .bubble4');
+      bubbles.forEach(bubble => {
+        bubble.style.animation = 'none';
+        bubble.offsetHeight; 
+        bubble.style.animation = null; 
+      });
+    }
+    
+    let observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          restartAnimation();
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    let homeSection = document.querySelector('#home');
+    observer.observe(homeSection);
 });
